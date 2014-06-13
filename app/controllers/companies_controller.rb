@@ -4,9 +4,17 @@ class CompaniesController < ActionController::Base
   end
 
   def new
+    @company = Company.new
   end
 
   def create
+    @company = Company.new(company_params)
+    if @company.save
+      redirect_to '/companies'
+    else
+      flash[:notice] = "Uh oh! Your company could not be saved."
+      redirect_to '/companies'
+    end
   end
 
   def show
@@ -23,7 +31,8 @@ class CompaniesController < ActionController::Base
 
   end
 
-  def companies_params
+  def company_params
+    params.require(:company).permit(:name, :description, :industry, :location)
   end
 
 end
