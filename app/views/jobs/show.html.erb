@@ -3,7 +3,7 @@
 
 Title: <%= @job.title %><br>
 Description: <%= @job.description %><br>
-Company: <%= @job.company.name %>
+Company: <%= link_to @job.company.name, company_path(@job.company.id) %>
 
 <p>
   <%= link_to "View all jobs", jobs_path %>

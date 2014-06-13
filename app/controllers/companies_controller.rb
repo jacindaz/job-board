@@ -1,4 +1,5 @@
 class CompaniesController < ActionController::Base
+
   def index
     @companies = Company.all
   end
@@ -10,7 +11,7 @@ class CompaniesController < ActionController::Base
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to '/companies'
+      redirect_to "/companies/#{@company.id}"
     else
       flash[:notice] = "Uh oh! Your company could not be saved."
       redirect_to '/companies'
@@ -27,8 +28,19 @@ class CompaniesController < ActionController::Base
         @jobs << job
       end
     end
-    #binding.pry
+  end
 
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      redirect_to company_params
+    else
+      render 'edit'
+    end
   end
 
   def company_params
