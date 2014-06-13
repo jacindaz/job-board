@@ -1,0 +1,15 @@
+<h1><%= @company.name %></h1>
+
+<ul>
+  <li><%= @company.name %></li>
+  <li><%= @company.location %></li>
+  <li><%= @company.industry %></li>
+</ul>
+
+<h1>Jobs</h1>
+
+<ul>
+<% @jobs.each do |job| %>
+  <li><%= link_to job.title, job_path(job) %></li>
+<% end %>
+</ul>

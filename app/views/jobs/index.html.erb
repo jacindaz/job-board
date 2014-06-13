@@ -1,7 +1,13 @@
-<h1>Jobs</h1>
+<h1>
+  <%= link_to "Jobs", jobs_path %>
+  <%= link_to "Companies", companies_path %>
+</h1>
 
 <ul>
   <% @jobs.each do |job| %>
-   <li><%= job.title %> - <%= job.company.name %>, <%= job.company.location %></li>
+   <li>
+    <%= link_to "#{job.title} - #{job.company.name},
+                #{job.company.location}", job_path(job) %>
+  </li>
   <% end %>
 </ul>

@@ -1,0 +1,10 @@
+<h1>Job Details</h1>
+
+
+Title: <%= @job.title %><br>
+Description: <%= @job.description %><br>
+Company: <%= @job.company.name %>
+
+<p>
+  <%= link_to "View all jobs", jobs_path %>
+</p>

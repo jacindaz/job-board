@@ -1,7 +1,7 @@
 class JobsController < ActionController::Base
 
   def index
-    @jobs = Job.all
+    @jobs = Job.order('created_at ASC').all
   end
 
   def new
@@ -11,6 +11,7 @@ class JobsController < ActionController::Base
   end
 
   def show
+    @job = Job.find(params[:id])
   end
 
   def jobs_params
