@@ -1,4 +1,4 @@
 Muenster::Application.routes.draw do
-  resources :jobs, only: [:index, :show]
+  resources :jobs
   resources :companies
 end
