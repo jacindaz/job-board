@@ -1,7 +1,19 @@
-<h1>Edit <%= @job.name %>'s Information</h1>
+<h1>Edit <%= @job.title %>'s Information</h1>
 
 <%= form_for @job, method: :patch do |f| %>
 
-<%= f.label
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</div>
+
+<div>
+  <%= f.submit %>
+</div>
 
 <% end %>
