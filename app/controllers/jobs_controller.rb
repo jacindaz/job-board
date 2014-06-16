@@ -7,14 +7,18 @@ class JobsController < ApplicationController
   # GET request that includes route to a form to create a new job
   def new
     @job = Job.new
+    @companies = []
+      Company.all.each do |company|
+        @companies << [company.name, company.id]
+      end
   end
 
   # POST request for a new job, sends to DB
   def create
     @job = Job.new(job_params)
+
     if @job.save
       redirect_to "/jobs/#{@job.id}"
-      #binding.pry
     else
       flash[:notice] = "Uh oh! Your job could not be saved."
       redirect_to '/jobs'
@@ -37,6 +41,11 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+  end
+
+  def destroy
+    Job.destroy(params[:id])
+    redirect_to jobs_path, :notice => "You have deleted this job."
   end
 
   def job_params

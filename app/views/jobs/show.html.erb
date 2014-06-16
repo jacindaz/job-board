@@ -8,5 +8,5 @@ Company: <%= link_to @job.company.name, company_path(@job.company.id) %>
 <hr>
 
 <p>
-  <%= link_to "Edit this Job", edit_job_path(@job.id) %>
+  <%= link_to "Edit this Job", edit_job_path(@job.id) %> | <%= link_to "Delete this Job", job_path(@job), method: :delete %>
 </p>
