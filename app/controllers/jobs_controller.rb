@@ -1,4 +1,4 @@
-class JobsController < ActionController::Base
+class JobsController < ApplicationController
 
   def index
     @jobs = Job.order('created_at ASC').all
@@ -13,7 +13,7 @@ class JobsController < ActionController::Base
   def create
     @job = Job.new(job_params)
     if @job.save
-      redirect_to "/jobs/#{@job.id}}"
+      redirect_to "/jobs/#{@job.id}"
       #binding.pry
     else
       flash[:notice] = "Uh oh! Your job could not be saved."
@@ -22,7 +22,7 @@ class JobsController < ActionController::Base
   end
 
   def show
-    binding.pry
+    #binding.pry
     @job = Job.find(params[:id])
   end
 
@@ -33,6 +33,10 @@ class JobsController < ActionController::Base
     else
       render 'show'
     end
+  end
+
+  def edit
+    @job = Job.find(params[:id])
   end
 
   def job_params
